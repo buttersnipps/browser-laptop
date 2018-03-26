@@ -208,7 +208,7 @@ if (isDarwin) {
     'curl -o ' + torPath + ' ' + torURL,
     'curl -o ' + torSigPath + ' ' + torSigURL,
     'gpg --verify ' + torSigPath + ' ' + torPath,
-    'unzip ' + torPath + '/tor-win.zip',
+    'unzip ' + torPath + '/tor-win.zip'
   ]
   execute(cmds, {}, (err) => {
     if (err) {
