@@ -51,6 +51,8 @@ const UrlUtil = {
    * @returns {String} path with a scheme
    */
   prependScheme: function (input) {
+
+
     if (input === undefined || input === null) {
       return input
     }
@@ -63,12 +65,13 @@ const UrlUtil = {
     // detect absolute file paths
     if (input.startsWith('/')) {
       input = fileScheme + input
+     
     }
-
     // If there's no scheme, prepend the default scheme
     if (!UrlUtil.hasScheme(input)) {
       input = defaultScheme + input
     }
+    
 
     return input
   },
@@ -114,8 +117,10 @@ const UrlUtil = {
     const case3Reg = /[?./\s:]/
     // for cases, data:uri, view-source:uri and about
     const case4Reg = /^(data|view-source|mailto|about|chrome-extension|chrome-devtools|magnet|chrome):.*/
+    
+    let urlifyStr = input.replace(' ','%20')
+    let str = urlifyStr.trim()
 
-    let str = input.trim()
     const scheme = UrlUtil.getScheme(str)
 
     if (str.toLowerCase() === 'localhost') {

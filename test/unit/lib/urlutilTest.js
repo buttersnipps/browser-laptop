@@ -77,7 +77,7 @@ describe('urlutil', function () {
       })
       it('contains a hostname and port number', function () {
         assert.equal(urlUtil.isNotURL('someBraveServer:8089'), false)
-      })
+      })      
       it('starts or ends with whitespace', function () {
         assert.equal(urlUtil.isNotURL('  http://brave.com  '), false)
         assert.equal(urlUtil.isNotURL('\n\nhttp://brave.com\n\n'), false)
@@ -150,6 +150,9 @@ describe('urlutil', function () {
       })
       it('has space in schema', function () {
         assert.equal(urlUtil.isNotURL('https ://brave.com'), true)
+      })
+      it('is a string with whitespace but needs to be URL space encoded',function(){
+        assert.equal(urlUtil.isNotURL('dog%20cat'),true)
       })
     })
   })
